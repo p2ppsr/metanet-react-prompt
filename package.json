@@ -1,0 +1,46 @@
+{
+  "name": "metanet-react-prompts",
+  "version": "0.1.0",
+  "description": "Onboard users to the MetaNet",
+  "repository": "git+https://github.com/p2ppsr/metanet-react-prompts",
+  "author": "Peer-to-Peer Privacy Systems Research LLC",
+  "license": "Open BSV License",  
+  "main": "./out/src/index.js",
+  "types": "./out/src/index.d.ts",
+  "files": [
+    "out"
+  ],
+    "scripts": {
+    "build": "tsc"
+  },
+    "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.9",
+    "@mui/material": "^5.10.10",
+    "@mui/styles": "^5.10.10",
+    "react-device-detect": "^2.2.2",
+    "react-responsive-carousel": "^3.2.23",
+    "react": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.47",
+    "@types/react-dom": "^18.2.18",
+    "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "standard": "^17.0.0",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "@babbage/sdk": "^0.4.25",
+    "react": "*",
+    "react-dom": "*"
+  }
+}
