@@ -43,8 +43,10 @@ Wrap your app (or the part of it that requires the Babbage SDK to work) with thi
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import DownloadButton from 'metanet-react-prompts'
 
 // TODO: Example coming soon!
+<DownloadButton variant='outlined' color='primary' hideOnMobile />
 ```
 
 Caveats

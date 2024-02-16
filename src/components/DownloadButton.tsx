@@ -9,26 +9,19 @@ import Popper from '@mui/material/Popper'
 import MenuItem from '@mui/material/MenuItem'
 import MenuList from '@mui/material/MenuList'
 import license from './license'
-import { Dialog, DialogTitle, DialogActions, Typography, Theme } from '@mui/material'
-import { makeStyles } from '@mui/styles'
+import { Dialog, DialogTitle, DialogActions, Typography } from '@mui/material'
+import { styled } from '@mui/material/styles'
 
-const useStyles = makeStyles((theme: Theme) => ({
-  buttonStyle: {
-
-  },
-  pre: {
-    wordWrap: 'break-word',
-    fontFamily: 'Times New Roman',
-    padding: theme.spacing(2),
-    boxSizing: 'border-box',
-    overflowX: 'auto',
-    overflowY: 'scroll',
-    whiteSpace: 'pre-wrap',
-    maxHeight: '30em'
-  }
-}), {
-  name: 'DownloadButton'
-})
+const PreStyled = styled('pre')(({ theme }) => ({
+  wordWrap: 'break-word',
+  fontFamily: 'Times New Roman',
+  padding: theme.spacing(2),
+  boxSizing: 'border-box',
+  overflowX: 'auto',
+  overflowY: 'scroll',
+  whiteSpace: 'pre-wrap',
+  maxHeight: '30em',
+}))
 interface DownloadOption {
   buttonText: string
   downloadFilename: string
@@ -72,7 +65,6 @@ export default function SplitButton(props: any) {
   const [downloadURL, setDownloadURL] = useState('https://cdn.projectbabbage.com/desktop/res/MetaNet%20Client.exe')
   const anchorRef = React.useRef<HTMLElement>(null);
   const [selectedOS, setSelectedOS] = useState(1)
-  const classes = useStyles()
   const [downloadFilename, setDownloadFilename] = useState(
     'MetaNet Client.exe'
   )
@@ -83,6 +75,7 @@ export default function SplitButton(props: any) {
     a.download = downloadFilename
     a.click()
     setDialogOpen(false)
+    props.setMncError(null)
   }
   const handleClick = () => {
     console.info(`You clicked ${options[selectedOS]}`)
@@ -133,7 +126,7 @@ export default function SplitButton(props: any) {
   }
   return (
     <>
-      <ButtonGroup className={classes.buttonStyle} size='small' color='secondary' variant='contained' ref={anchorRef} aria-label='split button' {...props} >
+      <ButtonGroup size='small' color='secondary' variant='contained' ref={anchorRef} aria-label='split button' {...props} >
         <Button onClick={handleClick}>{options[selectedOS].buttonText}</Button>
         <Button
           size='small'
@@ -150,9 +143,9 @@ export default function SplitButton(props: any) {
           onClose={() => setDialogOpen(false)}
         >
           <DialogTitle>MetaNet Client License Agreement</DialogTitle>
-          <pre className={classes.pre}>
+          <PreStyled>
             {license}
-          </pre>
+          </PreStyled>
           <DialogActions>
             <Button onClick={() => setDialogOpen(false)}>I Disagree</Button>
             <Button onClick={handleDownload}>I Agree</Button>

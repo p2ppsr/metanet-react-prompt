@@ -39,22 +39,17 @@ const MenuItem_1 = __importDefault(require("@mui/material/MenuItem"));
 const MenuList_1 = __importDefault(require("@mui/material/MenuList"));
 const license_1 = __importDefault(require("./license"));
 const material_1 = require("@mui/material");
-const styles_1 = require("@mui/styles");
-const useStyles = (0, styles_1.makeStyles)((theme) => ({
-    buttonStyle: {},
-    pre: {
-        wordWrap: 'break-word',
-        fontFamily: 'Times New Roman',
-        padding: theme.spacing(2),
-        boxSizing: 'border-box',
-        overflowX: 'auto',
-        overflowY: 'scroll',
-        whiteSpace: 'pre-wrap',
-        maxHeight: '30em'
-    }
-}), {
-    name: 'BabbDownloadButton'
-});
+const styles_1 = require("@mui/material/styles");
+const PreStyled = (0, styles_1.styled)('pre')(({ theme }) => ({
+    wordWrap: 'break-word',
+    fontFamily: 'Times New Roman',
+    padding: theme.spacing(2),
+    boxSizing: 'border-box',
+    overflowX: 'auto',
+    overflowY: 'scroll',
+    whiteSpace: 'pre-wrap',
+    maxHeight: '30em',
+}));
 const options = [
     {
         buttonText: 'Download for Mac',
@@ -88,7 +83,6 @@ function SplitButton(props) {
     const [downloadURL, setDownloadURL] = (0, react_1.useState)('https://cdn.projectbabbage.com/desktop/res/MetaNet%20Client.exe');
     const anchorRef = react_1.default.useRef(null);
     const [selectedOS, setSelectedOS] = (0, react_1.useState)(1);
-    const classes = useStyles();
     const [downloadFilename, setDownloadFilename] = (0, react_1.useState)('MetaNet Client.exe');
     const [disabled, setDisabled] = (0, react_1.useState)(false);
     const handleDownload = () => {
@@ -142,7 +136,7 @@ function SplitButton(props) {
             return ((0, jsx_runtime_1.jsx)(material_1.Typography, { children: "Available for Mac, Windows & Linux" }));
         }
     }
-    return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsxs)(ButtonGroup_1.default, Object.assign({ className: classes.buttonStyle, size: 'small', color: 'secondary', variant: 'contained', ref: anchorRef, "aria-label": 'split button' }, props, { children: [(0, jsx_runtime_1.jsx)(Button_1.default, { onClick: handleClick, children: options[selectedOS].buttonText }), (0, jsx_runtime_1.jsx)(Button_1.default, { size: 'small', "aria-controls": open ? 'split-button-menu' : undefined, "aria-expanded": open ? 'true' : undefined, "aria-label": 'select merge strategy', "aria-haspopup": 'menu', onClick: handleToggle, children: (0, jsx_runtime_1.jsx)(icons_material_1.KeyboardArrowDownOutlined, {}) }), (0, jsx_runtime_1.jsxs)(material_1.Dialog, { open: dialogOpen, onClose: () => setDialogOpen(false), children: [(0, jsx_runtime_1.jsx)(material_1.DialogTitle, { children: "MetaNet Client License Agreement" }), (0, jsx_runtime_1.jsx)("pre", { className: classes.pre, children: license_1.default }), (0, jsx_runtime_1.jsxs)(material_1.DialogActions, { children: [(0, jsx_runtime_1.jsx)(Button_1.default, { onClick: () => setDialogOpen(false), children: "I Disagree" }), (0, jsx_runtime_1.jsx)(Button_1.default, { onClick: handleDownload, children: "I Agree" })] })] })] })), (0, jsx_runtime_1.jsx)(Popper_1.default, { sx: {
+    return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsxs)(ButtonGroup_1.default, Object.assign({ size: 'small', color: 'secondary', variant: 'contained', ref: anchorRef, "aria-label": 'split button' }, props, { children: [(0, jsx_runtime_1.jsx)(Button_1.default, { onClick: handleClick, children: options[selectedOS].buttonText }), (0, jsx_runtime_1.jsx)(Button_1.default, { size: 'small', "aria-controls": open ? 'split-button-menu' : undefined, "aria-expanded": open ? 'true' : undefined, "aria-label": 'select merge strategy', "aria-haspopup": 'menu', onClick: handleToggle, children: (0, jsx_runtime_1.jsx)(icons_material_1.KeyboardArrowDownOutlined, {}) }), (0, jsx_runtime_1.jsxs)(material_1.Dialog, { open: dialogOpen, onClose: () => setDialogOpen(false), children: [(0, jsx_runtime_1.jsx)(material_1.DialogTitle, { children: "MetaNet Client License Agreement" }), (0, jsx_runtime_1.jsx)(PreStyled, { children: license_1.default }), (0, jsx_runtime_1.jsxs)(material_1.DialogActions, { children: [(0, jsx_runtime_1.jsx)(Button_1.default, { onClick: () => setDialogOpen(false), children: "I Disagree" }), (0, jsx_runtime_1.jsx)(Button_1.default, { onClick: handleDownload, children: "I Agree" })] })] })] })), (0, jsx_runtime_1.jsx)(Popper_1.default, { sx: {
                     zIndex: 1
                 }, open: open, anchorEl: anchorRef.current, role: undefined, transition: true, disablePortal: true, children: ({ TransitionProps, placement }) => ((0, jsx_runtime_1.jsx)(Grow_1.default, Object.assign({}, TransitionProps, { style: {
                         transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom'
