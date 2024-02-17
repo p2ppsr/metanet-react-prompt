@@ -43,10 +43,36 @@ Wrap your app (or the part of it that requires the Babbage SDK to work) with thi
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import DownloadButton from 'metanet-react-prompts'
+import PaymentTokenator from 'payment-tokenator'
+import { DownloadButton, useMNCErrorHandler } from 'metanet-react-prompts'
 
-// TODO: Example coming soon!
+const handleMNCError = useMNCErrorHandler();
+
+// Example Button to use in custom solution when manually displaying notice
 <DownloadButton variant='outlined' color='primary' hideOnMobile />
+
+// Example autoCatcher
+// Step 1: Wrap your app with the MNCErrorHandlerProvider
+<MNCErrorHandlerProvider>
+  <App />
+</MNCErrorHandlerProvider>
+
+// Step 2: Catch MNC errors and throw them as necessary (async func errors are not caught automatically)
+useEffect(() => {
+  (async () => {
+    try {
+      const paymentsToReceive = await paymentTokenator.listIncomingPayments()
+    } catch (error: any) {
+      // Are you expecting other types of errors?
+      if (error.code === 'ERR_NO_METANET_IDENTITY') {
+        handleMNCError(error);
+      } else {
+        // Handle other errors or rethrow them
+      }
+    }
+    setLoading(false)
+  })()
+}, [])
 ```
 
 Caveats
