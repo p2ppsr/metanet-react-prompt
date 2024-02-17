@@ -1,2 +1,2 @@
-export { default as useMNCErrorHandler } from './useMNCErrorHandler';
+export { MNCErrorHandlerProvider, useMNCErrorHandler } from './MNCErrorHandler';
 //# sourceMappingURL=index.d.ts.map
