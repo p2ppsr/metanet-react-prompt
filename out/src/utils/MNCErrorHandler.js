@@ -17,8 +17,7 @@ const useMNCErrorHandler = () => {
 exports.useMNCErrorHandler = useMNCErrorHandler;
 const MNCErrorHandlerProvider = ({ children }) => {
     const handleError = (0, react_1.useCallback)((error) => {
-        const CustomToastContent = () => ((0, jsx_runtime_1.jsxs)("div", { children: ["MetaNet Client Required!", (0, jsx_runtime_1.jsx)(components_1.DownloadButton, { variant: "outlined", color: "primary", setMncError: error })] }));
-        react_toastify_1.toast.error((0, jsx_runtime_1.jsx)(CustomToastContent, {}), {
+        react_toastify_1.toast.error(() => ((0, jsx_runtime_1.jsxs)("div", { children: ["MetaNet Client Required!", (0, jsx_runtime_1.jsx)(components_1.DownloadButton, { variant: "outlined", color: "primary", setMncError: error })] })), {
             autoClose: false,
             closeButton: true,
             draggable: false,

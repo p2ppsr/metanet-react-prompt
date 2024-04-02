@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { ReactNode, createContext, useCallback, useContext } from "react"
-import { ToastContainer, toast } from "react-toastify"
+import React, { ReactNode, createContext, useCallback, useContext } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
 import { DownloadButton } from "../components"
 
 interface ErrorHandlerProviderProps {
@@ -19,7 +19,7 @@ export const useMNCErrorHandler = () => {
 
 export const MNCErrorHandlerProvider: React.FC<ErrorHandlerProviderProps> = ({ children }) => {
   const handleError = useCallback((error: Error) => {
-    const CustomToastContent = () => (
+    toast.error(() => (
       <div>
         MetaNet Client Required!
         <DownloadButton
@@ -28,9 +28,7 @@ export const MNCErrorHandlerProvider: React.FC<ErrorHandlerProviderProps> = ({ c
           setMncError={error}
         />
       </div>
-    )
-
-    toast.error(<CustomToastContent />, {
+    ), {
       autoClose: false,
       closeButton: true,
       draggable: false,
