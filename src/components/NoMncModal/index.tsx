@@ -27,7 +27,7 @@ const NoMncModal: React.FC<NoMncModalProps> = ({ open, onClose }) => {
       aria-labelledby='modal-modal-title'
       aria-describedby='modal-modal-description'
     >
-      <Box sx={style} className='focusBorderNone'>
+      <Box sx={style} style={{outlineWidth:'0'}}>
         <Typography id='modal-modal-title' variant='h6' component='h2'>
           PeerPay requires the MetaNet Client
         </Typography>
