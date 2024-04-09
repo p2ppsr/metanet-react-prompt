@@ -5,15 +5,13 @@
   "repository": "git+https://github.com/p2ppsr/metanet-react-prompt",
   "author": "Peer-to-Peer Privacy Systems Research LLC",
   "license": "Open BSV License",
-  "main": "dist/metanet-react-prompt.js",
+  "main": "./out/src/index.js",
+  "types": "./out/src/index.d.ts",
   "files": [
     "out"
   ],
   "scripts": {
-    "build:tsc": "tsc",
-    "start": "webpack serve --config webpack.dev.js",
-    "build": "tsc && webpack --config webpack.prod.js",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "build": "tsc"
   },
   "eslintConfig": {
     "extends": [
@@ -42,8 +40,6 @@
     "@typescript-eslint/parser": "^6.20.0",
     "standard": "^17.0.0",
     "ts-loader": "^9.5.1",
-    "typescript": "^5.3.3",
-    "webpack": "^5.91.0",
-    "webpack-cli": "^5.1.4"
+    "typescript": "^5.3.3"
   }
 }
