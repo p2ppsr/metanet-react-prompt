@@ -20,7 +20,7 @@
     ]
   },
   "dependencies": {
-    "@babbage/sdk-ts": "^0.2.17",
+    "@babbage/sdk-ts": "^0.2.18",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.10.9",
