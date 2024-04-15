@@ -14,11 +14,12 @@ const style = {
 }
 
 interface NoMncModalProps {
+  appName: string,
   open: boolean
   onClose: () => void
 }
 
-const NoMncModal: React.FC<NoMncModalProps> = ({ open, onClose }) => {
+const NoMncModal: React.FC<NoMncModalProps> = ({ appName, open, onClose }) => {
   return (
     <Modal
       open={open}
@@ -26,9 +27,9 @@ const NoMncModal: React.FC<NoMncModalProps> = ({ open, onClose }) => {
       aria-labelledby='modal-modal-title'
       aria-describedby='modal-modal-description'
     >
-      <Box sx={style} style={{outlineWidth:'0'}}>
+      <Box sx={style} style={{ outlineWidth: '0' }}>
         <Typography id='modal-modal-title' variant='h6' component='h2'>
-          PeerPay requires the MetaNet Client
+          {appName ? appName : 'This app'} requires the MetaNet Client
         </Typography>
         <Typography id='modal-modal-description' sx={{ mt: 2 }}>
           If you don't have it yet, it can be downloaded on{' '}
