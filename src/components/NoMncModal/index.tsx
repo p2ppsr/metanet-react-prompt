@@ -16,7 +16,7 @@ const NoMncModal: React.FC<NoMncModalProps> = ({ appName, open, onClose }) => {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 400,
-    bgcolor: theme.palette.mode === 'dark' ? 'background.default' : 'background.paper',
+    bgcolor: 'background.default',
     border: `2px solid ${theme.palette.mode === 'dark' ? '#fff' : '#000'}`,
     boxShadow: 24,
     p: 4,
