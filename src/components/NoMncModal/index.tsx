@@ -1,25 +1,28 @@
-import React from 'react'
-import { Modal, Box, Typography } from '@mui/material'
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-}
+import React from 'react';
+import { Modal, Box, Typography, useTheme } from '@mui/material';
 
 interface NoMncModalProps {
-  appName: string,
-  open: boolean
-  onClose: () => void
+  appName: string;
+  open: boolean;
+  onClose: () => void;
 }
 
 const NoMncModal: React.FC<NoMncModalProps> = ({ appName, open, onClose }) => {
+  const theme = useTheme();
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: theme.palette.mode === 'dark' ? 'background.default' : 'background.paper',
+    border: `2px solid ${theme.palette.mode === 'dark' ? '#fff' : '#000'}`,
+    boxShadow: 24,
+    p: 4,
+    outlineWidth: 0,
+  };
+
   return (
     <Modal
       open={open}
@@ -27,7 +30,7 @@ const NoMncModal: React.FC<NoMncModalProps> = ({ appName, open, onClose }) => {
       aria-labelledby='modal-modal-title'
       aria-describedby='modal-modal-description'
     >
-      <Box sx={style} style={{ outlineWidth: '0' }}>
+      <Box sx={style}>
         <Typography id='modal-modal-title' variant='h6' component='h2'>
           {appName ? appName : 'This app'} requires the MetaNet Client
         </Typography>
@@ -59,7 +62,7 @@ const NoMncModal: React.FC<NoMncModalProps> = ({ appName, open, onClose }) => {
         </Typography>
       </Box>
     </Modal>
-  )
-}
+  );
+};
 
-export default NoMncModal
+export default NoMncModal;
