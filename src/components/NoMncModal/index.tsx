@@ -65,4 +65,4 @@ const NoMncModal: React.FC<NoMncModalProps> = ({ appName, open, onClose }) => {
   );
 };
 
-export default NoMncModal;
+export default NoMncModal
