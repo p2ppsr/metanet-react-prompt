@@ -7,7 +7,7 @@ import { WalletClient } from '@bsv/sdk'
 */
 export default async (): Promise<number> => {
   try {
-    const { network } = await new WalletClient('json-api', 'non-admin.com').getNetwork()
+    const { network } = await new WalletClient('auto').getNetwork()
     
     if (network === 'mainnet') {
       return 1
