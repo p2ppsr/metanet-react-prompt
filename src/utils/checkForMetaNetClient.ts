@@ -1,14 +1,20 @@
-import { getNetwork } from '@babbage/sdk-ts'
+import { WalletClient } from '@bsv/sdk'
 
-export default async () => {
+/*
+  Check if the MetaNet Client is running, and, if so, if it's on mainnet or testnet
+
+  @returns 1 for mainnet, -1 for testnet, 0 for an error (i.e. indicating MNC isn't running)
+*/
+export default async (): Promise<number> => {
   try {
-    const result = await getNetwork()
-    if (result === 'mainnet') {
+    const { network } = await new WalletClient('json-api', 'non-admin.com').getNetwork()
+    
+    if (network === 'mainnet') {
       return 1
     } else {
       return -1
     }
-  } catch (e) {
+  } catch (error) {
     return 0
   }
 }
