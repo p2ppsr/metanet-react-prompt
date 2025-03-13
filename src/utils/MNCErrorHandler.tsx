@@ -2,6 +2,7 @@
 import React, { ReactNode, createContext, useCallback, useContext } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import { DownloadButton } from "../components"
+import 'react-toastify/dist/ReactToastify.css'
 
 interface ErrorHandlerProviderProps {
   children: ReactNode
