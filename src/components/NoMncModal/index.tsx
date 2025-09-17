@@ -35,30 +35,15 @@ const NoMncModal: React.FC<NoMncModalProps> = ({ appName, open, onClose }) => {
           {appName ? appName : 'This app'} requires the MetaNet Client
         </Typography>
         <Typography id='modal-modal-description' sx={{ mt: 2 }}>
-          If you don't have it yet, it can be downloaded on{' '}
+          If you don't have it yet, Please{' '}
           <a
-            href='https://projectbabbage.com/desktop/res/MetaNet%20Client.exe'
+            href='https://desktop.bsvb.tech'
             target='_blank'
             rel='noopener noreferrer'
           >
-            Windows
-          </a>
-          ,{' '}
-          <a
-            href='https://projectbabbage.com/desktop/res/MetaNet%20Client.dmg'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            macOS
-          </a>
-          , or{' '}
-          <a
-            href='https://projectbabbage.com/desktop/res/MetaNet%20Client.AppImage'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Linux
-          </a>
+            download
+          </a>{' '}
+          it.
         </Typography>
       </Box>
     </Modal>
