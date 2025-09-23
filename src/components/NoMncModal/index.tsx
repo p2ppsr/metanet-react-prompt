@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Box, Typography, useTheme } from '@mui/material';
+import { Modal, Box, Typography, useTheme, Alert } from '@mui/material';
 
 interface NoMncModalProps {
   appName: string;
@@ -9,6 +9,16 @@ interface NoMncModalProps {
 
 const NoMncModal: React.FC<NoMncModalProps> = ({ appName, open, onClose }) => {
   const theme = useTheme();
+
+  const [isSafari, setIsSafari] = React.useState(false);
+  React.useEffect(() => {
+    if (typeof navigator === 'undefined') return;
+    const ua = navigator.userAgent || '';
+    // Detect Safari while excluding Chrome/Chromium/Edge/Opera/Firefox variants, including iOS variants.
+    const isSafariCandidate = /Safari/i.test(ua) &&
+      !/Chrome|Chromium|CriOS|Edg|EdgiOS|OPR|OPiOS|FxiOS|Firefox|SamsungBrowser/i.test(ua);
+    setIsSafari( isSafariCandidate );
+  }, []);
 
   const style = {
     position: 'absolute',
@@ -34,31 +44,21 @@ const NoMncModal: React.FC<NoMncModalProps> = ({ appName, open, onClose }) => {
         <Typography id='modal-modal-title' variant='h6' component='h2'>
           {appName ? appName : 'This app'} requires the MetaNet Client
         </Typography>
+        {isSafari && (
+          <Alert severity='warning' sx={{ mt: 2 }}>
+            For the best experience, please use Google Chrome or Firefox instead of Safari.
+          </Alert>
+        )}
         <Typography id='modal-modal-description' sx={{ mt: 2 }}>
-          If you don't have it yet, it can be downloaded on{' '}
+          If you don't have it yet, it can be downloaded{' '}
           <a
-            href='https://projectbabbage.com/desktop/res/MetaNet%20Client.exe'
+            href='https://getmetanet.com/'
             target='_blank'
             rel='noopener noreferrer'
           >
-            Windows
+            here
           </a>
-          ,{' '}
-          <a
-            href='https://projectbabbage.com/desktop/res/MetaNet%20Client.dmg'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            macOS
-          </a>
-          , or{' '}
-          <a
-            href='https://projectbabbage.com/desktop/res/MetaNet%20Client.AppImage'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Linux
-          </a>
+          .
         </Typography>
       </Box>
     </Modal>
