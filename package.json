@@ -1,7 +1,7 @@
 {
   "name": "metanet-react-prompt",
   "version": "1.0.6",
-  "description": "Onboard users to the MetaNet",
+  "description": "Onboard users to Babbage Metanet / BRC-100 wallet distributions",
   "repository": "git+https://github.com/p2ppsr/metanet-react-prompt",
   "author": "Peer-to-Peer Privacy Systems Research LLC",
   "license": "Open BSV License",
